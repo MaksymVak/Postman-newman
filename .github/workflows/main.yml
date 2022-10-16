@@ -3,9 +3,9 @@ on:
   push:
     branches:
      - master
-      jobs:
-        test-api:
-          runs-on: ubuntu-latest
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
       - name: Install Node
         uses: actions/setup-node@v1
         with:
