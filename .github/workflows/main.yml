@@ -3,24 +3,24 @@ on:
   push:
     branches:
      - master
-    jobs:
-      test-api:
-        runs-on: ubuntu-latest
-    - name: Install Node
-      uses: actions/setup-node@v1
-      with:
-        node-version: "16.x"
-    - name: Install newman
-      run: |
-        npm install -g newman
-        npm install -g newman-reportet-htmlextra
-    - name: Make Direcrory for results
-      run: mkdir -p testResults
-    - name: Run Postmam collection
-      run: |
-        newman run store.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme > restResults/runreport1.html
-    - name: Output the run Details
-      uses: actions/upload-artifact@v2
-      with:
-        name: RunReports
-        path: testResults
+      jobs:
+        test-api:
+          runs-on: ubuntu-latest
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+         node-version: "16.x"
+      - name: Install newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reportet-htmlextra
+      - name: Make Direcrory for results
+        run: mkdir -p testResults
+      - name: Run Postmam collection
+        run: |
+         newman run store.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme > restResults/runreport1.html
+      - name: Output the run Details
+        uses: actions/upload-artifact@v2
+        with:
+          name: RunReports
+          path: testResults
